@@ -1,16 +1,57 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
-  font-family: sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f6f2;
+  color: #333;
   text-align: center;
-  padding: 2em;
-  background-color: #f9f9f9;
+  padding: 4em 1em;
+  margin: 0;
 }
 
 h1 {
-  color: #333;
+  font-size: 2em;
+  color: #3a3a3a;
+  margin-bottom: 0.5em;
 }
 
-input, button {
+p {
+  font-size: 1.1em;
+  color: #5a5a5a;
+  margin-bottom: 1.5em;
+}
+
+input[type="file"] {
+  border: 1px solid #ccc;
+  padding: 0.6em;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+button {
   margin-top: 1em;
-  padding: 0.5em;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  background-color: #d2b48c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #b99e7b;
+}
+
+#result {
+  margin-top: 2em;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -16,7 +16,7 @@ async function analyzeImage() {
     const response = await fetch("https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer hf_FakeTokenForDemoOnly",  // You'd replace with a real token if needed
+        "Authorization": "Bearer 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",
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
