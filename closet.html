@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closet App - My Closet</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="closet.html">My Closet</a>
+    <a href="shop.html">Shop</a>
+    <a href="ethics.html">Ethics Info</a>
+  </nav>
+  <h1>My Closet</h1>
+  <section id="upload">
+    <h2>Add Item</h2>
+    <input type="file" id="closetImage" accept="image/*">
+    <input type="text" id="closetTags" placeholder="Tags (e.g. summer, casual)">
+    <button onclick="addClosetItem()">Upload</button>
+  </section>
+  <section id="closetItems">
+    <!-- items will appear here -->
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>

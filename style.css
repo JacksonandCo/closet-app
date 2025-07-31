@@ -10,6 +10,22 @@ body {
   margin: 0;
 }
 
+nav {
+  background-color: #ede9e3;
+  padding: 1em;
+}
+
+nav a {
+  margin: 0 1em;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
 h1 {
   font-size: 2em;
   color: #3a3a3a;
@@ -54,4 +70,19 @@ button:hover {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.closet-card {
+  display: inline-block;
+  margin: 1em;
+  padding: 1em;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.closet-card img {
+  max-width: 150px;
+  display: block;
+  margin: 0 auto 0.5em;
 }
