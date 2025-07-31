@@ -11,13 +11,20 @@
     <a href="index.html">Home</a>
     <a href="closet.html">My Closet</a>
     <a href="shop.html">Shop</a>
+    <a href="brand-ratings.html">Brand Ratings</a>
     <a href="ethics.html">Ethics Info</a>
   </nav>
   <h1>My Closet</h1>
   <section id="upload">
     <h2>Add Item</h2>
     <input type="file" id="closetImage" accept="image/*">
-    <input type="text" id="closetTags" placeholder="Tags (e.g. summer, casual)">
+    <input type="text" id="closetTags" placeholder="Tags (e.g. casual, formal)">
+    <select id="closetSeason">
+      <option value="Summer">Summer</option>
+      <option value="Fall">Fall</option>
+      <option value="Winter">Winter</option>
+      <option value="Spring">Spring</option>
+    </select>
     <button onclick="addClosetItem()">Upload</button>
   </section>
   <section id="closetItems">

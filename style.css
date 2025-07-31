@@ -81,8 +81,58 @@ button:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+.closet-card span {
+  display: block;
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0.5em;
+}
+
 .closet-card img {
   max-width: 150px;
   display: block;
   margin: 0 auto 0.5em;
+}
+
+.brand-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.brand-card p {
+  flex: 1;
+  margin: 0 1em;
+}
+
+.score {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+}
+
+.score.Aplus, .score.A {
+  background-color: #4caf50;
+}
+.score.B {
+  background-color: #8bc34a;
+}
+.score.C {
+  background-color: #ffb74d;
+}
+.score.D {
+  background-color: #ff9800;
+}
+.score.F {
+  background-color: #f44336;
 }
