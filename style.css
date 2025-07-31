@@ -38,11 +38,23 @@ p {
   margin-bottom: 1.5em;
 }
 
-input[type="file"] {
-  border: 1px solid #ccc;
-  padding: 0.6em;
-  border-radius: 6px;
-  background-color: #fff;
+.file-input {
+  display: none;
+}
+
+.upload-label {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  background-color: #d2b48c;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+  background-color: #b99e7b;
 }
 
 button {
@@ -74,19 +86,31 @@ button:hover {
 
 .closet-card {
   display: inline-block;
-  margin: 1em;
-  padding: 1em;
+  margin: 0.5em;
+  padding: 0.5em;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
+  cursor: pointer;
 }
 
-.closet-card span {
-  display: block;
-  font-size: 0.9em;
-  color: #666;
-  margin-top: 0.5em;
+.closet-card p, .closet-card button {
+  display: none;
 }
+
+
+.closet-card.active p,
+.closet-card.active button {
+  display: block;
+}
+
+.collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 
 .closet-card img {
   max-width: 150px;
@@ -135,4 +159,19 @@ button:hover {
 }
 .score.F {
   background-color: #f44336;
+}
+
+.lifestyle figure {
+  margin: 2em auto;
+  max-width: 500px;
+}
+
+.lifestyle img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.lifestyle figcaption {
+  margin-top: 0.5em;
+  font-style: italic;
 }

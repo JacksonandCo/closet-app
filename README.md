@@ -9,4 +9,4 @@ A simple web app for experimenting with AI-generated fashion descriptions and or
 - **Brand Ratings** – search top brands and view color-coded eco scores.
 - **Ethics Info** – basic eco score table and tips on sustainable fashion.
 
-The app uses vanilla HTML, CSS and JavaScript. To try the image captioning demo on the home page, provide your own HuggingFace API token in `script.js`.
+The app uses vanilla HTML, CSS and JavaScript. A small Node.js server forwards image captioning requests to Hugging Face. Create a `.env` file with your `HUGGINGFACE_TOKEN` and run `npm start` to launch the server.

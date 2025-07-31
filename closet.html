@@ -17,18 +17,33 @@
   <h1>My Closet</h1>
   <section id="upload">
     <h2>Add Item</h2>
-    <input type="file" id="closetImage" accept="image/*">
+    <input type="file" id="closetImage" accept="image/*" class="file-input">
+    <label for="closetImage" class="upload-label">Add to Closet</label>
     <input type="text" id="closetTags" placeholder="Tags (e.g. casual, formal)">
     <select id="closetSeason">
-      <option value="Summer">Summer</option>
-      <option value="Fall">Fall</option>
       <option value="Winter">Winter</option>
+      <option value="Fall">Fall</option>
       <option value="Spring">Spring</option>
+      <option value="Summer">Summer</option>
     </select>
     <button onclick="addClosetItem()">Upload</button>
   </section>
-  <section id="closetItems">
-    <!-- items will appear here -->
+
+  <section id="WinterSectionWrapper">
+    <h2>Winter</h2>
+    <div id="WinterSection" class="collage"></div>
+  </section>
+  <section id="FallSectionWrapper">
+    <h2>Fall</h2>
+    <div id="FallSection" class="collage"></div>
+  </section>
+  <section id="SpringSectionWrapper">
+    <h2>Spring</h2>
+    <div id="SpringSection" class="collage"></div>
+  </section>
+  <section id="SummerSectionWrapper">
+    <h2>Summer</h2>
+    <div id="SummerSection" class="collage"></div>
   </section>
   <script src="script.js"></script>
 </body>
