@@ -36,35 +36,48 @@ async function captionImage(dataUrl) {
   }
 }
 
+let pendingImage = null;
+let pendingDesc = '';
+
 // Closet functionality
 function loadCloset() {
-  const sections = {
-    Winter: document.getElementById('WinterSection'),
-    Fall: document.getElementById('FallSection'),
-    Spring: document.getElementById('SpringSection'),
-    Summer: document.getElementById('SummerSection')
-  };
-  Object.values(sections).forEach(sec => sec && (sec.innerHTML = ''));
+  const container = document.getElementById('closetContainer');
+  if (!container) return;
+  container.innerHTML = '';
   const items = JSON.parse(localStorage.getItem('closet') || '[]');
+  const byCat = {};
   items.forEach((item, index) => {
-    const card = document.createElement('div');
-    card.className = 'closet-card';
-    card.innerHTML =
-      `<img src="${item.image}" alt="item">` +
-      `<p>${item.description}</p>` +
-      `<button onclick="deleteClosetItem(${index})">Delete</button>`;
-    card.addEventListener('click', () => {
-      card.classList.toggle('active');
+    const cat = item.category || 'Misc';
+    if (!byCat[cat]) byCat[cat] = [];
+    byCat[cat].push({ item, index });
+  });
+  Object.keys(byCat).forEach(cat => {
+    const details = document.createElement('details');
+    details.className = 'category';
+    const summary = document.createElement('summary');
+    summary.textContent = cat;
+    details.appendChild(summary);
+    const collage = document.createElement('div');
+    collage.className = 'collage';
+    byCat[cat].forEach(({ item, index }) => {
+      const card = document.createElement('div');
+      card.className = 'closet-card';
+      card.innerHTML =
+        `<img src="${item.image}" alt="item">` +
+        `<p>${item.description}</p>` +
+        `<button onclick="deleteClosetItem(${index})">Delete</button>`;
+      card.addEventListener('click', () => {
+        card.classList.toggle('active');
+      });
+      collage.appendChild(card);
     });
-    const sec = sections[item.season];
-    if (sec) sec.appendChild(card);
+    details.appendChild(collage);
+    container.appendChild(details);
   });
 }
 
 function addClosetItem() {
   const fileInput = document.getElementById('closetImage');
-  const tagsInput = document.getElementById('closetTags');
-  const seasonSelect = document.getElementById('closetSeason');
   const file = fileInput.files[0];
   if (!file) {
     alert('Choose an image');
@@ -72,18 +85,8 @@ function addClosetItem() {
   }
   const reader = new FileReader();
   reader.onload = async function () {
-    const items = JSON.parse(localStorage.getItem('closet') || '[]');
     const desc = await captionImage(reader.result);
-    items.push({
-      image: reader.result,
-      description: desc,
-      season: seasonSelect.value,
-      tags: tagsInput.value,
-    });
-    localStorage.setItem('closet', JSON.stringify(items));
-    fileInput.value = '';
-    tagsInput.value = '';
-    loadCloset();
+    showModal(reader.result, desc);
   };
   reader.readAsDataURL(file);
 }
@@ -95,9 +98,62 @@ function deleteClosetItem(index) {
   loadCloset();
 }
 
+function showModal(img, desc) {
+  pendingImage = img;
+  pendingDesc = desc;
+  document.getElementById('modalImage').src = img;
+  document.getElementById('modalDesc').innerText = desc;
+  document.getElementById('modalCategory').value = '';
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function hideModal() {
+  document.getElementById('modal').style.display = 'none';
+}
+
+function saveModalItem() {
+  const cat = document.getElementById('modalCategory').value || 'Misc';
+  const items = JSON.parse(localStorage.getItem('closet') || '[]');
+  items.push({ image: pendingImage, description: pendingDesc, category: cat });
+  localStorage.setItem('closet', JSON.stringify(items));
+  document.getElementById('closetImage').value = '';
+  hideModal();
+  loadCloset();
+  loadRecents();
+}
+
+function loadRecents() {
+  const container = document.getElementById('recentUploads');
+  if (!container) return;
+  const items = JSON.parse(localStorage.getItem('closet') || '[]');
+  const recent = items.slice(-4).reverse();
+  container.innerHTML = '';
+  recent.forEach(item => {
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = 'recent';
+    img.className = 'recent-thumb';
+    container.appendChild(img);
+  });
+}
+
+function loadGreeting() {
+  const span = document.getElementById('userName');
+  if (!span) return;
+  let name = localStorage.getItem('userName');
+  if (!name) {
+    name = prompt('Enter your name');
+    if (name) localStorage.setItem('userName', name);
+  }
+  span.textContent = name || 'friend';
+}
+
 window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('saveButton')?.addEventListener('click', saveModalItem);
   loadCloset();
   loadBrands();
+  loadRecents();
+  loadGreeting();
 });
 
 let allBrands = [];
