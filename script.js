@@ -19,24 +19,17 @@ async function analyzeImage() {
 async function captionImage(dataUrl) {
   const base64Image = dataUrl.split(',')[1];
   try {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
-      {
-        method: "POST",
-        headers: {
-          // Insert your HuggingFace API token below
-          Authorization: "Bearer YOUR_HF_API_TOKEN",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ inputs: { image: base64Image } }),
-      }
-    );
+    const response = await fetch('/caption', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: base64Image })
+    });
 
     const data = await response.json();
-    if (data[0] && data[0].generated_text) {
-      return data[0].generated_text;
+    if (data.description) {
+      return data.description;
     }
-    return "No description";
+    return 'No description';
   } catch (e) {
     console.error(e);
     return "Description unavailable";
@@ -45,19 +38,26 @@ async function captionImage(dataUrl) {
 
 // Closet functionality
 function loadCloset() {
-  const container = document.getElementById('closetItems');
-  if (!container) return;
+  const sections = {
+    Winter: document.getElementById('WinterSection'),
+    Fall: document.getElementById('FallSection'),
+    Spring: document.getElementById('SpringSection'),
+    Summer: document.getElementById('SummerSection')
+  };
+  Object.values(sections).forEach(sec => sec && (sec.innerHTML = ''));
   const items = JSON.parse(localStorage.getItem('closet') || '[]');
-  container.innerHTML = '';
   items.forEach((item, index) => {
     const card = document.createElement('div');
     card.className = 'closet-card';
     card.innerHTML =
       `<img src="${item.image}" alt="item">` +
       `<p>${item.description}</p>` +
-      `<span>${item.folder}</span>` +
       `<button onclick="deleteClosetItem(${index})">Delete</button>`;
-    container.appendChild(card);
+    card.addEventListener('click', () => {
+      card.classList.toggle('active');
+    });
+    const sec = sections[item.season];
+    if (sec) sec.appendChild(card);
   });
 }
 
@@ -77,7 +77,7 @@ function addClosetItem() {
     items.push({
       image: reader.result,
       description: desc,
-      folder: seasonSelect.value,
+      season: seasonSelect.value,
       tags: tagsInput.value,
     });
     localStorage.setItem('closet', JSON.stringify(items));
