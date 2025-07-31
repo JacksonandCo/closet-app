@@ -1,0 +1,12 @@
+[
+  {"name": "Green Threads", "score": "A", "reason": "Uses organic cotton and fair labor"},
+  {"name": "Budget Fashions", "score": "D", "reason": "Synthetic materials and unclear supply chain"},
+  {"name": "Luxury Luxe", "score": "C", "reason": "Quality materials but poor transparency"},
+  {"name": "Eco Wear", "score": "A+", "reason": "Fully sustainable operations"},
+  {"name": "Fast Trends", "score": "F", "reason": "Known fast fashion practices"},
+  {"name": "Classic Co.", "score": "B", "reason": "Some sustainable lines"},
+  {"name": "Nature Style", "score": "A", "reason": "Recycled fabrics and eco packaging"},
+  {"name": "Urban Chic", "score": "C", "reason": "Limited info on factories"},
+  {"name": "Beach Breeze", "score": "B", "reason": "Uses natural dyes"},
+  {"name": "Night Owl", "score": "D", "reason": "Heavy use of synthetics"}
+]
