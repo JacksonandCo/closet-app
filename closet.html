@@ -18,33 +18,20 @@
   <section id="upload">
     <h2>Add Item</h2>
     <input type="file" id="closetImage" accept="image/*" class="file-input">
-    <label for="closetImage" class="upload-label">Add to Closet</label>
-    <input type="text" id="closetTags" placeholder="Tags (e.g. casual, formal)">
-    <select id="closetSeason">
-      <option value="Winter">Winter</option>
-      <option value="Fall">Fall</option>
-      <option value="Spring">Spring</option>
-      <option value="Summer">Summer</option>
-    </select>
-    <button onclick="addClosetItem()">Upload</button>
+    <label for="closetImage" class="upload-label">Upload to Closet</label>
+    <button onclick="addClosetItem()">Scan</button>
   </section>
 
-  <section id="WinterSectionWrapper">
-    <h2>Winter</h2>
-    <div id="WinterSection" class="collage"></div>
-  </section>
-  <section id="FallSectionWrapper">
-    <h2>Fall</h2>
-    <div id="FallSection" class="collage"></div>
-  </section>
-  <section id="SpringSectionWrapper">
-    <h2>Spring</h2>
-    <div id="SpringSection" class="collage"></div>
-  </section>
-  <section id="SummerSectionWrapper">
-    <h2>Summer</h2>
-    <div id="SummerSection" class="collage"></div>
-  </section>
+  <section id="closetContainer"></section>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="preview">
+      <p id="modalDesc"></p>
+      <input type="text" id="modalCategory" placeholder="Name this category">
+      <button id="saveButton">Save to Closet</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

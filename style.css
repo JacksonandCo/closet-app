@@ -73,6 +73,25 @@ button:hover {
   background-color: #b99e7b;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
 #result {
   margin-top: 2em;
   background-color: #ffffff;
@@ -109,6 +128,24 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.category {
+  margin-bottom: 2em;
+}
+
+.category summary {
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1em;
+}
+
+.recent-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0.25em;
 }
 
 
